@@ -1,0 +1,58 @@
+# Xcode
+*.xcodeproj
+*.xcworkspace
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+*.xcscheme
+
+# Build
+build/
+DerivedData/
+*.app
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Archives
+*.xcarchive
+
+# DMG
+*.dmg
+
+# CocoaPods
+Pods/
+*.xcworkspace
+
+# Carthage
+Carthage/Build/
+
+# Swift Package Manager
+.build/
+.swiftpm/
+Package.resolved
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment
+.env
+.env.local

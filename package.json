@@ -1,0 +1,21 @@
+{
+  "name": "macapptemplate",
+  "version": "1.0.0",
+  "description": "macOS menu bar app template",
+  "scripts": {
+    "build:dmg": "node scripts/build-dmg.js",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.0.0",
+    "@commitlint/config-conventional": "^19.0.0",
+    "husky": "^9.0.0",
+    "lint-staged": "^15.0.0",
+    "prettier": "^3.8.1"
+  },
+  "lint-staged": {
+    "*.{js,json,md}": "prettier --write --ignore-unknown"
+  },
+  "author": "",
+  "license": "MIT"
+}
