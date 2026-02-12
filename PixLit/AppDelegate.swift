@@ -48,7 +48,27 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
 
     private func setupHotkey() {
-        hotkeyService.register { [weak self] in
+        let shortcut = HotkeyShortcut.load()
+        hotkeyService.register(
+            keyCode: shortcut.keyCode,
+            modifiers: shortcut.modifiers
+        ) { [weak self] in
+            DispatchQueue.main.async {
+                self?.triggerCapture()
+            }
+        }
+    }
+
+    func suspendHotkey() {
+        hotkeyService.unregister()
+    }
+
+    func updateHotkey(shortcut: HotkeyShortcut) {
+        hotkeyService.unregister()
+        hotkeyService.register(
+            keyCode: shortcut.keyCode,
+            modifiers: shortcut.modifiers
+        ) { [weak self] in
             DispatchQueue.main.async {
                 self?.triggerCapture()
             }

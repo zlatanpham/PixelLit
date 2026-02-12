@@ -78,6 +78,7 @@ struct SettingsView: View {
 
 private struct GeneralTabView: View {
     @StateObject private var launchManager = LaunchAtLoginManager()
+    @State private var shortcut = HotkeyShortcut.load()
 
     var body: some View {
         ScrollView {
@@ -97,16 +98,23 @@ private struct GeneralTabView: View {
                         Text("Capture Screen Region")
                             .font(.system(size: 13))
                         Spacer()
-                        Text("\u{2318}\u{21E7}2")
-                            .font(.system(size: 13, design: .monospaced))
-                            .padding(.horizontal, 8)
-                            .padding(.vertical, 4)
-                            .background(Color(NSColor.controlBackgroundColor))
-                            .cornerRadius(6)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(Color(NSColor.separatorColor), lineWidth: 1)
-                            )
+                        ShortcutRecorderView(shortcut: $shortcut) { newShortcut in
+                            newShortcut.save()
+                            AppDelegate.shared?.updateHotkey(shortcut: newShortcut)
+                        }
+                        Button {
+                            shortcut = .default
+                            HotkeyShortcut.default.save()
+                            AppDelegate.shared?.updateHotkey(shortcut: .default)
+                        } label: {
+                            Image(systemName: "arrow.counterclockwise")
+                                .font(.system(size: 12))
+                                .foregroundColor(.secondary)
+                        }
+                        .buttonStyle(.plain)
+                        .help("Reset to default (\(HotkeyShortcut.default.displayString))")
+                        .opacity(shortcut != .default ? 1 : 0)
+                        .allowsHitTesting(shortcut != .default)
                     }
                 }
 
