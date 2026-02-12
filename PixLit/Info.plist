@@ -24,5 +24,7 @@
 	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2024. All rights reserved.</string>
+	<key>NSScreenCaptureUsageDescription</key>
+	<string>PixLit needs screen recording access to capture and extract text from your screen.</string>
 </dict>
 </plist>

@@ -3,9 +3,9 @@ import AppKit
 @MainActor
 class MainViewModel: ObservableObject {
     @Published var lastExtractedText: String?
+    @Published var lastCaptureDate: Date?
     @Published var isCapturing = false
     @Published var error: String?
-    @Published var statusMessage: String?
 
     private let captureService = ScreenCaptureService.shared
 
@@ -14,18 +14,16 @@ class MainViewModel: ObservableObject {
 
         isCapturing = true
         error = nil
-        statusMessage = nil
 
         Task {
             do {
                 let text = try await captureService.captureAndExtractText()
                 lastExtractedText = text
-                statusMessage = "Text copied to clipboard!"
+                lastCaptureDate = Date()
                 NSSound(named: "Pop")?.play()
             } catch let captureError as CaptureError {
                 switch captureError {
                 case .cancelled:
-                    // User cancelled — stay silent
                     break
                 default:
                     self.error = captureError.localizedDescription
