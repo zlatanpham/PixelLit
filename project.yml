@@ -2,15 +2,15 @@ name: PixLit
 options:
   bundleIdPrefix: com.pixlit
   deploymentTarget:
-    macOS: "14.0"
-  xcodeVersion: "15.0"
+    macOS: '14.0'
+  xcodeVersion: '15.0'
   createIntermediateGroups: true
 
 settings:
   base:
-    SWIFT_VERSION: "5.0"
-    MARKETING_VERSION: "1.0.0"
-    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: '5.0'
+    MARKETING_VERSION: '0.0.1'
+    CURRENT_PROJECT_VERSION: '1'
 
 targets:
   PixLit:
@@ -19,7 +19,7 @@ targets:
     sources:
       - path: PixLit
         excludes:
-          - "**/.DS_Store"
+          - '**/.DS_Store'
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.pixlit.app

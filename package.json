@@ -1,6 +1,6 @@
 {
-  "name": "macapptemplate",
-  "version": "1.0.0",
+  "name": "pixel-lit",
+  "version": "0.0.1",
   "description": "macOS menu bar app template",
   "scripts": {
     "build:dmg": "node scripts/build-dmg.js",
